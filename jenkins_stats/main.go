@@ -26,7 +26,7 @@ func main() {
 	db.AutoMigrate(&Build{})
 
 	ctx := context.Background()
-	jenkins := gojenkins.CreateJenkins(nil, "https://jenkins.ad1.proemion.com/", os.Getenv("JENKINS_USER"), os.Getenv("JENKINS_PASSWORD"))
+	jenkins := gojenkins.CreateJenkins(nil, os.Getenv("JENKINS_URL"), os.Getenv("JENKINS_USER"), os.Getenv("JENKINS_PASSWORD"))
 	_, err = jenkins.Init(ctx)
 	if err != nil {
 		panic(fmt.Sprintln("failed to connect to jenkins:", err))
